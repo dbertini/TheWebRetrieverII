@@ -9,16 +9,16 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
 public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
-    interface Binder extends UiBinder<Widget, ApplicationView> {
-    }
+	interface Binder extends UiBinder<Widget, ApplicationView> {
+	}
 
-    @UiField
-    SimplePanel main;
+	@UiField
+	SimplePanel main;
 
-    @Inject
-    ApplicationView(
-            Binder uiBinder) {
-        initWidget(uiBinder.createAndBindUi(this));
+	@Inject
+	ApplicationView(Binder uiBinder) {
+		initWidget(uiBinder.createAndBindUi(this));
 
-        bindSlot(ApplicationPresenter.SLOT_MAIN, main);
+		bindSlot(ApplicationPresenter.SLOT_MAIN, main);
+	}
 }
