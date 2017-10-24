@@ -12,9 +12,14 @@
 
     <properties>
         <!-- client -->
-        <gwt.version>2.8.2</gwt.version>
-        <gwtp.version>1.6</gwtp.version>
-        <gin.version>2.1.2</gin.version>
+        <gwt.version>2.7.0</gwt.version>
+         <gwtp.version>1.5.1</gwtp.version>
+         <gin.version>2.1.2</gin.version>
+         <gwt.style>OBF</gwt.style>
+
+	<!-- <gwt.version>2.8.2</gwt.version> -->
+	<!-- <gwtp.version>1.6</gwtp.version> -->
+	<!-- <gin.version>2.1.2</gin.version> -->
 <!--         <gwt.style>OBF</gwt.style> -->
 
         <!-- maven -->
