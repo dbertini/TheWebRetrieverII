@@ -4,6 +4,9 @@
 <module rename-to='TheWebRetrieverII'>
     <inherits name='com.google.gwt.user.User'/>
     <inherits name="com.gwtplatform.mvp.MvpWithEntryPoint"/>
+    
+    <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
+    <inherits name="org.gwtbootstrap3.GwtBootstrap3Theme"/>
 
     <extend-configuration-property name="gin.ginjector.modules"
                                    value="com.projectname.project.client.gin.ClientModule"/>
