@@ -7,4 +7,16 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+    
+    <servlet>
+      <servlet-name>webRetrieverServiceImpl</servlet-name>
+      <servlet-class>com.projectname.project.server.service.WebRetrieverServiceImpl
+      </servlet-class>
+   </servlet>
+
+   <servlet-mapping>
+      <servlet-name>webRetrieverServiceImpl</servlet-name>
+      <url-pattern>/TheWebRetrieverII/wrservice</url-pattern>
+   </servlet-mapping>
+   
 </web-app>
