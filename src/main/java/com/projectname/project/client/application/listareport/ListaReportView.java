@@ -60,4 +60,17 @@ public class ListaReportView extends ViewImpl implements ListaReportPresenter.My
             }
         }.schedule(2000);
 	}
+
+	@Override
+	public void setDefault(String aValue) {
+		nome.setValue(aValue);
+	}
+
+	@Override
+	public void addText(String aValue) {
+		String str = nome.getValue();
+		
+		nome.setValue(str + "-" + aValue);
+		
+	}
 }
