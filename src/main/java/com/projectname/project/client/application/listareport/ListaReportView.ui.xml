@@ -16,10 +16,15 @@
 				<b:InputGroup>
 					<b:InputGroupAddon>P</b:InputGroupAddon>
 					<b:TextBox ui:field="nome" placeholder="Type here"
-						autoComplete="false"  />
+						autoComplete="false" />
 					<b:InputGroupAddon>A</b:InputGroupAddon>
 				</b:InputGroup>
 			</b:Column>
+		</b:Row>
+		<b:Row>
+			<b:ListGroup ui:field="listReport">
+				<b:ListGroupItem text="xx"></b:ListGroupItem>
+			</b:ListGroup>
 		</b:Row>
 	</b:Container>
 

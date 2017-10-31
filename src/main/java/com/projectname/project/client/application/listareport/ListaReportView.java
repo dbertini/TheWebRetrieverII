@@ -1,8 +1,13 @@
 package com.projectname.project.client.application.listareport;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.inject.Inject;
 
 import org.gwtbootstrap3.client.ui.Button;
+import org.gwtbootstrap3.client.ui.ListGroup;
+import org.gwtbootstrap3.client.ui.ListGroupItem;
 import org.gwtbootstrap3.client.ui.TextBox;
 
 import com.google.gwt.core.client.GWT;
@@ -24,6 +29,8 @@ public class ListaReportView extends ViewImpl implements ListaReportPresenter.My
 	Button bottone;
 	@UiField
 	TextBox nome;
+	@UiField
+	ListGroup listReport;
 	
 	interface Binder extends UiBinder<Widget, ListaReportView> {
 	}
@@ -71,6 +78,18 @@ public class ListaReportView extends ViewImpl implements ListaReportPresenter.My
 		String str = nome.getValue();
 		
 		nome.setValue(str + "-" + aValue);
+		
+	}
+
+	@Override
+	public void buildList(ArrayList<Report> conf) {
+		
+		for (Iterator<Report> iterator = conf.iterator(); iterator.hasNext();) {
+			Report report = iterator.next();
+			ListGroupItem item = new ListGroupItem();
+			item.setText(report.getName());
+			listReport.add(item);
+		}
 		
 	}
 }

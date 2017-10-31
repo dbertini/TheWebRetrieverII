@@ -1,0 +1,1 @@
+package com.projectname.project.shared.bean;

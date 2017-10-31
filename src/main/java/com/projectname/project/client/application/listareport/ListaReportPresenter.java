@@ -1,5 +1,7 @@
 package com.projectname.project.client.application.listareport;
 
+import java.util.ArrayList;
+
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -16,6 +18,7 @@ public class ListaReportPresenter extends Presenter<ListaReportPresenter.MyView,
 	interface MyView extends View {
 		public void setDefault(String aValue);
 		public void addText(String aValue);
+		public void buildList(ArrayList<Report> conf);
 	}
 
 	@ProxyStandard
@@ -43,6 +46,26 @@ public class ListaReportPresenter extends Presenter<ListaReportPresenter.MyView,
 
 	@Override
 	protected void onReveal() {
-		getView().addText("CAZZO");
+//		WebRetrieverServiceAsync wrService = GWT.create(WebRetrieverService.class);
+//		wrService.getListaReport(new AsyncCallback<List<ReportConfiguration>>() {
+//			
+//			@Override
+//			public void onSuccess(List<ReportConfiguration> result) {
+//				ArrayList<Report> repos = new ArrayList<>();
+//				
+//				result.forEach(a -> {
+//					Report rep = new Report();
+//					rep.setName(a.getName());
+//					
+//					repos.add(rep);
+//				});
+//				
+//				getView().buildList(repos);
+//			}
+//			
+//			@Override
+//			public void onFailure(Throwable caught) {
+//			}
+//		});
 	}
 }
