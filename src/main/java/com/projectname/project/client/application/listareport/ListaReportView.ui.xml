@@ -3,8 +3,24 @@
 	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.gwt="urn:import:org.gwtbootstrap3.client.ui.gwt"
 	xmlns:d="urn:import:org.gwtbootstrap3.demo.client.ui">
 
-	<b:Panel>
-		<b:Button ui:field="bottone" type="PRIMARY" icon="STAR"
-			iconSpin="true" iconBordered="true">asss</b:Button>
-	</b:Panel>
+
+	<b:Container fluid="true">
+		<b:Row>
+			<b:Column size="LG_2">
+				<b:Button ui:field="bottone" type="DANGER" icon="STAR"
+					iconSpin="true" iconBordered="true"></b:Button>
+			</b:Column>
+		</b:Row>
+		<b:Row>
+			<b:Column size="LG_2">
+				<b:InputGroup>
+					<b:InputGroupAddon>P</b:InputGroupAddon>
+					<b:TextBox ui:field="nome" placeholder="Type here"
+						autoComplete="false"  />
+					<b:InputGroupAddon>A</b:InputGroupAddon>
+				</b:InputGroup>
+			</b:Column>
+		</b:Row>
+	</b:Container>
+
 </ui:UiBinder>

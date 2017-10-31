@@ -3,6 +3,7 @@ package com.projectname.project.client.application.listareport;
 import javax.inject.Inject;
 
 import org.gwtbootstrap3.client.ui.Button;
+import org.gwtbootstrap3.client.ui.TextBox;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -21,6 +22,8 @@ public class ListaReportView extends ViewImpl implements ListaReportPresenter.My
 	private WebRetrieverServiceAsync wrService = GWT.create(WebRetrieverService.class);
 	@UiField
 	Button bottone;
+	@UiField
+	TextBox nome;
 	
 	interface Binder extends UiBinder<Widget, ListaReportView> {
 	}
@@ -42,13 +45,13 @@ public class ListaReportView extends ViewImpl implements ListaReportPresenter.My
 					
 					@Override
 					public void onSuccess(String result) {
-						bottone.setText(result);
-						bottone.state().reset();						
+						nome.setValue(result);
+						bottone.state().reset();
 					}
 					
 					@Override
 					public void onFailure(Throwable caught) {
-						bottone.setText("Botta clamorosa");
+						nome.setValue("Botta clamorosa");
 						bottone.state().reset();
 					}
 				});
