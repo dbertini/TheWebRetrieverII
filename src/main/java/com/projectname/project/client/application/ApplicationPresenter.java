@@ -18,7 +18,6 @@ public class ApplicationPresenter
     }
 
     public static final NestedSlot SLOT_MAIN = new NestedSlot();
-
     @Inject
     ApplicationPresenter(
             EventBus eventBus,

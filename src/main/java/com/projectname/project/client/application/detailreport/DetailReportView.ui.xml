@@ -1,0 +1,56 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:org.gwtbootstrap3.client.ui"
+	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.gwt="urn:import:org.gwtbootstrap3.client.ui.gwt"
+	xmlns:d="urn:import:org.gwtbootstrap3.demo.client.ui">
+
+	<b:Panel>
+		<b:PanelHeader>
+			<b:Heading size="H3" text="Dettaglio Report" />
+		</b:PanelHeader>
+		<b:PanelBody>
+			<b:Container fluid="true">
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="Nome:" />
+					<b:DescriptionData text="" ui:field="nomeReport" />
+				</b:Description>
+
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="Descrizione:" />
+					<b:DescriptionData text="" ui:field="descrizioneReport" />
+				</b:Description>
+
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="Datasource:" />
+					<b:DescriptionData text="" ui:field="datasourceReport" />
+				</b:Description>
+
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="Schedulazione:" />
+					<b:DescriptionData text="" ui:field="schedulazioneReport" />
+				</b:Description>
+
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="Destinatari:" />
+					<b:DescriptionData text="" ui:field="recipitReport" />
+				</b:Description>
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="CC:" />
+					<b:DescriptionData text="" ui:field="ccReport" />
+				</b:Description>
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="CCN:" />
+					<b:DescriptionData text="" ui:field="ccnReport" />
+				</b:Description>
+
+
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="SQL Eseguito:" />
+					<b:DescriptionData text="" ui:field="sqlReport"/>
+				</b:Description>
+
+				<b:Button type="DANGER" text="Esegui adesso!" ui:field="eseguiButton"/>
+			</b:Container>
+		</b:PanelBody>
+	</b:Panel>
+
+</ui:UiBinder>

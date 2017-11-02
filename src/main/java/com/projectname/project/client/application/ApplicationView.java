@@ -14,11 +14,9 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
 
 	@UiField
 	SimplePanel main;
-
 	@Inject
 	ApplicationView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
-
 		bindSlot(ApplicationPresenter.SLOT_MAIN, main);
 	}
 }

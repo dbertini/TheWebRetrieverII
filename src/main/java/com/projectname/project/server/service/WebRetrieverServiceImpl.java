@@ -1,7 +1,6 @@
 package com.projectname.project.server.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.projectname.project.client.service.WebRetrieverService;
@@ -17,15 +16,11 @@ public class WebRetrieverServiceImpl extends RemoteServiceServlet implements Web
 
 	@Override
 	public String getMessaggio(String aString) {
-		
-		
-		
-		System.out.println("CAZZO è passato da qui!!!!");
 		return aString + "!!!!!!!!!!!";
 	}
 
 	@Override
-	public List<ReportConfiguration> getListaReport() {
+	public ArrayList<ReportConfiguration> getListaReport() {
 		ReportRetrieverService reportserv = new ReportRetrieverService();
 		try {
 			return reportserv.getListaReport();
@@ -33,6 +28,28 @@ public class WebRetrieverServiceImpl extends RemoteServiceServlet implements Web
 			e.printStackTrace();
 		}
 		return new ArrayList<>();
+	}
+	
+	@Override
+	public ReportConfiguration getReportDetail(String aReportName) {
+		ReportRetrieverService reportserv = new ReportRetrieverService();
+		try {
+			return reportserv.getReportDetail(aReportName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public String runReport(String aReportName) {
+		ReportRetrieverService reportserv = new ReportRetrieverService();
+		try {
+			return reportserv.runReport(aReportName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
