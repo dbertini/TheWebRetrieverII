@@ -1,4 +1,4 @@
-package com.projectname.project.client.application.detailreport;
+package com.projectname.project.client.application.listads;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -14,23 +14,21 @@ import com.projectname.project.client.application.ApplicationConstants;
 import com.projectname.project.client.application.ApplicationPresenter;
 import com.projectname.project.client.place.NameTokens;
 
-public class DetailReportPresenter extends Presenter<DetailReportPresenter.MyView, DetailReportPresenter.MyProxy> implements DetailReportUiHandlers {
+public class ListaDataSourcePresenter extends Presenter<ListaDataSourcePresenter.MyView, ListaDataSourcePresenter.MyProxy> implements ListaDataSourceUiHandlers {
 	
 	PlaceManager placeManager;
-	
-	private String reportName = "";
 
-	interface MyView extends View, HasUiHandlers<DetailReportPresenter> {
-		void setReportName(String aReportName);
+	interface MyView extends View, HasUiHandlers<ListaDataSourcePresenter> {
+		void rewrite();
 	}
 
 	@ProxyStandard
-	@NameToken(NameTokens.DETAIL_REPORT)
-	interface MyProxy extends ProxyPlace<DetailReportPresenter> {
+	@NameToken(NameTokens.LISTA_DATASOURCES)
+	interface MyProxy extends ProxyPlace<ListaDataSourcePresenter> {
 	}
 
 	@Inject
-	DetailReportPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager aPlaceManager) {
+	ListaDataSourcePresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager aPlaceManager) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 		getView().setUiHandlers(this);
 		this.placeManager = aPlaceManager;
@@ -39,25 +37,22 @@ public class DetailReportPresenter extends Presenter<DetailReportPresenter.MyVie
 	@Override
 	public void prepareFromRequest(PlaceRequest request) {
 		super.prepareFromRequest(request);
-		this.reportName = request.getParameter(ApplicationConstants.NOME_REPORT, "");// esempio di recupero dei parametri
-		getView().setReportName(this.reportName);
 	}
 
 	@Override
 	protected void onBind() {
 		super.onBind();
-		getView().setReportName(this.reportName);
 	}
 
 	@Override
 	protected void onReveal() {
 		super.onReveal();
+		getView().rewrite();
 	}
 
 	@Override
-	public void sendToListaReport() {
-		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.LISTA_REPORT).build();
+	public void sendToDetail(String aDsName) {
+		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.DETAIL_DATASOURCE).with(ApplicationConstants.NOME_DS, aDsName).build();
 		placeManager.revealPlace(placeRequest);
 	}
-	
 }

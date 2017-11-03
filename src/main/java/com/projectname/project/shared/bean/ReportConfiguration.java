@@ -12,7 +12,7 @@ public class ReportConfiguration implements Serializable {
 	private String export;
 	private long lastStartTime;
 	private long lastStopTime;
-	private Long executionId;
+	private String executionId;
 	private String name;
 	private String sql;
 	private String datasource;
@@ -41,10 +41,10 @@ public class ReportConfiguration implements Serializable {
 	public void setLastStopTime(long lastStopTime) {
 		this.lastStopTime = lastStopTime;
 	}
-	public Long getExecutionId() {
+	public String getExecutionId() {
 		return executionId;
 	}
-	public void setExecutionId(Long executionId) {
+	public void setExecutionId(String executionId) {
 		this.executionId = executionId;
 	}
 	public String getName() {

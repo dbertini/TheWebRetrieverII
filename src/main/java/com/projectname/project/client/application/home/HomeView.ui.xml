@@ -3,7 +3,7 @@
 
     <g:HTMLPanel>
         
-        <p>Hello David</p>
+        <p>The Web Report Retriever</p>
         
     </g:HTMLPanel>
 </ui:UiBinder>

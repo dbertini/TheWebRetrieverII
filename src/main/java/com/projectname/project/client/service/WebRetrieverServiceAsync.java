@@ -3,6 +3,7 @@ package com.projectname.project.client.service;
 import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.projectname.project.shared.bean.DataSourceConfiguration;
 import com.projectname.project.shared.bean.ReportConfiguration;
 
 public interface WebRetrieverServiceAsync {
@@ -10,4 +11,7 @@ public interface WebRetrieverServiceAsync {
 	void getListaReport(AsyncCallback<ArrayList<ReportConfiguration>> callback);
 	void getReportDetail(String aReportName, AsyncCallback<ReportConfiguration> callback);
 	void runReport(String aReportName, AsyncCallback<String> callback);
+
+	void getListaDataSources(AsyncCallback<ArrayList<DataSourceConfiguration>> callback);
+	void getDataSourceDetail(String aDataSourcetName, AsyncCallback<DataSourceConfiguration> callback);
 }

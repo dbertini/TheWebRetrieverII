@@ -44,6 +44,16 @@
 
 
 				<b:Description horizontal="true">
+					<b:DescriptionTitle text="Inizio ultima esec.:" />
+					<b:DescriptionData text="" ui:field="lastStartTimeReport" />
+				</b:Description>
+				<b:Description horizontal="true">
+					<b:DescriptionTitle text="Fine ultima esecuzione:" />
+					<b:DescriptionData text="" ui:field="lastStopTimeReport" />
+				</b:Description>
+
+
+				<b:Description horizontal="true">
 					<b:DescriptionTitle text="SQL Eseguito:" />
 					<b:DescriptionData text="" ui:field="sqlReport"/>
 				</b:Description>

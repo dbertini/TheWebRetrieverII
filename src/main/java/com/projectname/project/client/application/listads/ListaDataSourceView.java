@@ -1,4 +1,4 @@
-package com.projectname.project.client.application.listareport;
+package com.projectname.project.client.application.listads;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,55 +18,55 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.projectname.project.client.service.WebRetrieverService;
 import com.projectname.project.client.service.WebRetrieverServiceAsync;
-import com.projectname.project.shared.bean.ReportConfiguration;
+import com.projectname.project.shared.bean.DataSourceConfiguration;
 
-public class ListaReportView extends ViewWithUiHandlers<ListaReportPresenter> implements ListaReportPresenter.MyView {
+public class ListaDataSourceView extends ViewWithUiHandlers<ListaDataSourcePresenter> implements ListaDataSourcePresenter.MyView {
 	
 	@UiField
-	ListGroupItem listReport;
+	ListGroupItem listDataSources;
 	
-	interface Binder extends UiBinder<Widget, ListaReportView> {
+	interface Binder extends UiBinder<Widget, ListaDataSourceView> {
 	}
 
 	@Inject
-	ListaReportView(Binder uiBinder) {
+	ListaDataSourceView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	private void buildList(ArrayList<ReportConfiguration> conf) {
-		if(listReport!=null) {
-			listReport.clear();
-		}
+	private void buildList(ArrayList<DataSourceConfiguration> conf) {
 		
-		for (Iterator<ReportConfiguration> iterator = conf.iterator(); iterator.hasNext();) {
-			ReportConfiguration report = iterator.next();
-			final String name = report.getName();
-			
+		if(listDataSources != null) {
+			listDataSources.clear();
+		}
+
+		for (Iterator<DataSourceConfiguration> iterator = conf.iterator(); iterator.hasNext();) {
+			DataSourceConfiguration ds = iterator.next();
+			final String name = ds.getName();
 			LinkedGroupItem item = new LinkedGroupItem();
-			item.setText("Nome report: " + report.getName() + " - " + report.getDescription());
-			
+			item.setText("Nome report: " + ds.getName() + " - " + ds.getDescription());
 			item.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
 					getUiHandlers().sendToDetail(name);
 				}
 			});
-			listReport.add(item);
+			listDataSources.add(item);
 		}
 	}
 
 	@Override
 	public void rewrite() {
 		WebRetrieverServiceAsync wrService = GWT.create(WebRetrieverService.class);
-		wrService.getListaReport(new AsyncCallback<ArrayList<ReportConfiguration>>() {
+		wrService.getListaDataSources(new AsyncCallback<ArrayList<DataSourceConfiguration>>() {
 			@Override
 			public void onFailure(Throwable caught) {
 				GWT.log(caught.getMessage());
 			}
 			@Override
-			public void onSuccess(ArrayList<ReportConfiguration> result) {
+			public void onSuccess(ArrayList<DataSourceConfiguration> result) {
 				buildList(result);
 			}
 		});
 	}
+	
 }

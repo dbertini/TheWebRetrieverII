@@ -1,4 +1,4 @@
-package com.projectname.project.client.application.detailreport;
+package com.projectname.project.client.application.detailds;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -14,23 +14,23 @@ import com.projectname.project.client.application.ApplicationConstants;
 import com.projectname.project.client.application.ApplicationPresenter;
 import com.projectname.project.client.place.NameTokens;
 
-public class DetailReportPresenter extends Presenter<DetailReportPresenter.MyView, DetailReportPresenter.MyProxy> implements DetailReportUiHandlers {
+public class DetailDataSourcePresenter extends Presenter<DetailDataSourcePresenter.MyView, DetailDataSourcePresenter.MyProxy> implements DetailDataSourceUiHandlers {
 	
 	PlaceManager placeManager;
 	
-	private String reportName = "";
+	private String dsName = "";
 
-	interface MyView extends View, HasUiHandlers<DetailReportPresenter> {
-		void setReportName(String aReportName);
+	interface MyView extends View, HasUiHandlers<DetailDataSourcePresenter> {
+		void setDataSourceName(String aReportName);
 	}
 
 	@ProxyStandard
-	@NameToken(NameTokens.DETAIL_REPORT)
-	interface MyProxy extends ProxyPlace<DetailReportPresenter> {
+	@NameToken(NameTokens.DETAIL_DATASOURCE)
+	interface MyProxy extends ProxyPlace<DetailDataSourcePresenter> {
 	}
 
 	@Inject
-	DetailReportPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager aPlaceManager) {
+	DetailDataSourcePresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager aPlaceManager) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 		getView().setUiHandlers(this);
 		this.placeManager = aPlaceManager;
@@ -39,14 +39,14 @@ public class DetailReportPresenter extends Presenter<DetailReportPresenter.MyVie
 	@Override
 	public void prepareFromRequest(PlaceRequest request) {
 		super.prepareFromRequest(request);
-		this.reportName = request.getParameter(ApplicationConstants.NOME_REPORT, "");// esempio di recupero dei parametri
-		getView().setReportName(this.reportName);
+		this.dsName = request.getParameter(ApplicationConstants.NOME_DS, "");// esempio di recupero dei parametri
+		getView().setDataSourceName(this.dsName);
 	}
 
 	@Override
 	protected void onBind() {
 		super.onBind();
-		getView().setReportName(this.reportName);
+		getView().setDataSourceName(this.dsName);
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class DetailReportPresenter extends Presenter<DetailReportPresenter.MyVie
 	}
 
 	@Override
-	public void sendToListaReport() {
-		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.LISTA_REPORT).build();
+	public void sendToListaDataSource() {
+		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.LISTA_DATASOURCES).build();
 		placeManager.revealPlace(placeRequest);
 	}
 	

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.projectname.project.client.service.WebRetrieverService;
 import com.projectname.project.server.retrofit.services.ReportRetrieverService;
+import com.projectname.project.shared.bean.DataSourceConfiguration;
 import com.projectname.project.shared.bean.ReportConfiguration;
 
 public class WebRetrieverServiceImpl extends RemoteServiceServlet implements WebRetrieverService {
@@ -46,6 +47,28 @@ public class WebRetrieverServiceImpl extends RemoteServiceServlet implements Web
 		ReportRetrieverService reportserv = new ReportRetrieverService();
 		try {
 			return reportserv.runReport(aReportName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<DataSourceConfiguration> getListaDataSources() {
+		ReportRetrieverService reportserv = new ReportRetrieverService();
+		try {
+			return reportserv.getListaDataSources();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<>();
+	}
+
+	@Override
+	public DataSourceConfiguration getDataSourceDetail(String aDataSourcetName) {
+		ReportRetrieverService reportserv = new ReportRetrieverService();
+		try {
+			return reportserv.getDataSourceDetail(aDataSourcetName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

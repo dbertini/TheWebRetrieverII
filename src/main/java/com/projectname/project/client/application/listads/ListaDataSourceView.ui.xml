@@ -5,11 +5,10 @@
 
 	<b:Panel>
 		<b:PanelHeader>
-			<b:Heading size="H3" text="Lista report presenti su Retriver" />
+			<b:Heading size="H3" text="Lista DataSource presenti su Retriver" />
 		</b:PanelHeader>
 		<b:PanelBody>
-			<b:ListGroupItem ui:field="listReport">
-			 	
+			<b:ListGroupItem ui:field="listDataSources">
 			</b:ListGroupItem>
 		</b:PanelBody>
 	</b:Panel>

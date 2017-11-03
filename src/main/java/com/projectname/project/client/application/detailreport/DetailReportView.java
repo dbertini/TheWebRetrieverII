@@ -1,13 +1,15 @@
 package com.projectname.project.client.application.detailreport;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.DescriptionData;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Window;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -42,6 +44,10 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 	DescriptionData ccnReport;
 	@UiField
 	Button eseguiButton;
+	@UiField
+	DescriptionData lastStartTimeReport;
+	@UiField
+	DescriptionData lastStopTimeReport;
 	
 	interface Binder extends UiBinder<Widget, DetailReportView> {
 	}
@@ -75,6 +81,32 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 				recipitReport.setText(result.getRecipient());
 				ccReport.setText(result.getCclist());
 				ccnReport.setText(result.getCcnlist());
+				
+				try {
+					if(result.getLastStartTime()==0) {
+						lastStartTimeReport.setText("");
+					} else  {
+						Date start = new Date();
+						start.setTime(result.getLastStartTime());
+						DateTimeFormat fmt = DateTimeFormat.getFormat("dd/MM/yyyy HH:mm:ss");
+						lastStartTimeReport.setText(fmt.format(start));
+					}
+				}catch (Exception e) {
+					lastStartTimeReport.setText("");
+				}
+
+				try {
+					if(result.getLastStopTime()==0) {
+						lastStopTimeReport.setText("");
+					} else {
+						Date end = new Date();
+						end.setTime(result.getLastStopTime());
+						DateTimeFormat fmt = DateTimeFormat.getFormat("dd/MM/yyyy HH:mm:ss");
+						lastStopTimeReport.setText(fmt.format(end));
+					}
+				}catch (Exception e) {
+					lastStopTimeReport.setText("");
+				}
 			}
 			@Override
 			public void onFailure(Throwable caught) {

@@ -10,6 +10,7 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
+import com.projectname.project.client.application.ApplicationConstants;
 import com.projectname.project.client.application.ApplicationPresenter;
 import com.projectname.project.client.place.NameTokens;
 
@@ -18,6 +19,7 @@ public class ListaReportPresenter extends Presenter<ListaReportPresenter.MyView,
 	PlaceManager placeManager;
 
 	interface MyView extends View, HasUiHandlers<ListaReportPresenter> {
+		void rewrite();
 	}
 
 	@ProxyStandard
@@ -35,7 +37,6 @@ public class ListaReportPresenter extends Presenter<ListaReportPresenter.MyView,
 	@Override
 	public void prepareFromRequest(PlaceRequest request) {
 		super.prepareFromRequest(request);
-//		String param = request.getParameter("nomereport", "");// esempio di recupero dei parametri
 	}
 
 	@Override
@@ -46,24 +47,13 @@ public class ListaReportPresenter extends Presenter<ListaReportPresenter.MyView,
 	@Override
 	protected void onReveal() {
 		super.onReveal();
+		getView().rewrite();
 	}
 
 	@Override
 	public void sendToDetail(String aWhere) {
-		
-		System.out.println("Sono passato dal sendToDetail");
-		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.DETAIL_REPORT).with("nomereport", aWhere)
+		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.DETAIL_REPORT).with(ApplicationConstants.NOME_REPORT, aWhere)
 				.build();
-
 		placeManager.revealPlace(placeRequest);
 	}
-	
-//	public void sendToDetail(String aWhere) {
-//		PlaceRequest placeRequest = new PlaceRequest.Builder()
-//	            .nameToken(NameTokens.HOME)
-//	            .with("nomereport", aWhere)
-//	            .build();
-//
-//	    placeManager.revealPlace(placeRequest);
-//	}
 }

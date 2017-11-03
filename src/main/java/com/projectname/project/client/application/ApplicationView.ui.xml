@@ -33,8 +33,8 @@
 							<b:NavbarCollapse b:id="navbar-collapse"
 								ui:field="navbarCollapse">
 								<b:NavbarNav>
-									<b:AnchorListItem text="Report"
-										targetHistoryToken="{nameTokens.getListaReport}" />
+									<b:AnchorListItem text="Report" targetHistoryToken="{nameTokens.getListaReport}" />
+									<b:AnchorListItem text="DataSource" targetHistoryToken="{nameTokens.getListaDataSources}" />
 									<!-- <b:ListDropDown> -->
 									<!-- <b:AnchorButton dataToggle="DROPDOWN">CSS</b:AnchorButton> -->
 									<!-- <b:DropDownMenu> -->

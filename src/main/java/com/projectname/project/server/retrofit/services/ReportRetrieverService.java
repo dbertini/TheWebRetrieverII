@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.projectname.project.server.retrofit.interfaces.ReportRetrieverIterface;
 import com.projectname.project.server.utils.ApplicationConstants;
+import com.projectname.project.shared.bean.DataSourceConfiguration;
 import com.projectname.project.shared.bean.ReportConfiguration;
 
 import retrofit2.Call;
@@ -62,4 +63,27 @@ public class ReportRetrieverService {
 			return response.body();
 		}
 	}
+
+	public ArrayList<DataSourceConfiguration> getListaDataSources() throws Exception {
+		Call<List<DataSourceConfiguration>> call = service.dataSourceList();
+		Response<List<DataSourceConfiguration>> response = call.execute();
+		if(response.errorBody()!=null){
+			return null;
+		} else{
+			return (ArrayList<DataSourceConfiguration>)response.body();
+		}
+	}
+
+	public DataSourceConfiguration getDataSourceDetail(String aDataSourceName) throws Exception {
+		Call<DataSourceConfiguration> call = service.datasourceDetail(aDataSourceName);
+		Response<DataSourceConfiguration> response = call.execute();
+		System.out.println("Responde trovare");
+		System.out.println(response);
+		if(response.errorBody()!=null){
+			return null;
+		} else{
+			return response.body();
+		}
+	}
+	
 }

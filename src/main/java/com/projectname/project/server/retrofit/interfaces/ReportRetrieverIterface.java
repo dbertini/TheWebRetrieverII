@@ -1,6 +1,7 @@
 package com.projectname.project.server.retrofit.interfaces;
 import java.util.List;
 
+import com.projectname.project.shared.bean.DataSourceConfiguration;
 import com.projectname.project.shared.bean.ReportConfiguration;
 
 import retrofit2.Call;
@@ -16,5 +17,11 @@ public interface ReportRetrieverIterface {
 	
 	@GET("reports/runReport/{reportname}")
 	Call<String> runReport(@Path("reportname")String reportname);
+
+	@GET("datasources/datasourceList")
+	Call<List<DataSourceConfiguration>> dataSourceList();
+	
+	@GET("datasources/datasourceDetail/{datasourcename}")
+	Call<DataSourceConfiguration> datasourceDetail(@Path("datasourcename")String datasourcename);
 	
 }

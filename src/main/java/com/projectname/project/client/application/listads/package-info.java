@@ -1,0 +1,1 @@
+package com.projectname.project.client.application.listads;
