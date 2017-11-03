@@ -15,4 +15,5 @@ public interface WebRetrieverService extends RemoteService {
 	String runReport(String aReportName);
 	ArrayList<DataSourceConfiguration> getListaDataSources();
 	DataSourceConfiguration getDataSourceDetail(String aDataSourcetName);
+	String getRetrieverVersion();
 }

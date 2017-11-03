@@ -7,6 +7,7 @@ import com.projectname.project.server.retrofit.interfaces.ReportRetrieverIterfac
 import com.projectname.project.server.utils.ApplicationConstants;
 import com.projectname.project.shared.bean.DataSourceConfiguration;
 import com.projectname.project.shared.bean.ReportConfiguration;
+import com.projectname.project.shared.bean.RetrieverVersion;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -83,6 +84,17 @@ public class ReportRetrieverService {
 			return null;
 		} else{
 			return response.body();
+		}
+	}
+	
+	
+	public String getRetrieverVersion() throws Exception {
+		Call<RetrieverVersion> call = service.getRetrieverVersion();
+		Response<RetrieverVersion> response = call.execute();
+		if(response.errorBody()!=null){
+			return null;
+		} else{
+			return response.body().getVersion();
 		}
 	}
 	

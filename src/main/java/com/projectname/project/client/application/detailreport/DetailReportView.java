@@ -49,6 +49,9 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 	@UiField
 	DescriptionData lastStopTimeReport;
 	
+	@UiField
+	Button indietroButton;
+	
 	interface Binder extends UiBinder<Widget, DetailReportView> {
 	}
 
@@ -135,6 +138,10 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 			}
 		});
 	}
-	
+
+	@UiHandler("indietroButton")
+	public void onButtonIndietroClick(final ClickEvent event) {
+		
+	}
 
 }

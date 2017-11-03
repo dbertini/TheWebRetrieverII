@@ -59,6 +59,9 @@
 				</b:Description>
 
 				<b:Button type="DANGER" text="Esegui adesso!" ui:field="eseguiButton"/>
+				
+				<b:Button type="LINK" text="Indietro" ui:field="indietroButton"/>
+				
 			</b:Container>
 		</b:PanelBody>
 	</b:Panel>

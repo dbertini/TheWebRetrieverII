@@ -74,5 +74,17 @@ public class WebRetrieverServiceImpl extends RemoteServiceServlet implements Web
 		}
 		return null;
 	}
+	
+	
+	@Override
+	public String getRetrieverVersion() {
+		ReportRetrieverService reportserv = new ReportRetrieverService();
+		try {
+			return reportserv.getRetrieverVersion();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
