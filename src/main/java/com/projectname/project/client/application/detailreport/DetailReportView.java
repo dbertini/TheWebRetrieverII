@@ -76,40 +76,7 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 		wrService.getReportDetail(this.reportName, new AsyncCallback<ReportConfiguration>() {
 			@Override
 			public void onSuccess(ReportConfiguration result) {
-				nomeReport.setText(result.getName());
-				descrizioneReport.setText(result.getDescription());
-				datasourceReport.setText(result.getDatasource());
-				sqlReport.setText(result.getSql());
-				schedulazioneReport.setText(result.getCron());
-				recipitReport.setText(result.getRecipient());
-				ccReport.setText(result.getCclist());
-				ccnReport.setText(result.getCcnlist());
-				
-				try {
-					if(result.getLastStartTime()==0) {
-						lastStartTimeReport.setText("");
-					} else  {
-						Date start = new Date();
-						start.setTime(result.getLastStartTime());
-						DateTimeFormat fmt = DateTimeFormat.getFormat("dd/MM/yyyy HH:mm:ss");
-						lastStartTimeReport.setText(fmt.format(start));
-					}
-				}catch (Exception e) {
-					lastStartTimeReport.setText("");
-				}
-
-				try {
-					if(result.getLastStopTime()==0) {
-						lastStopTimeReport.setText("");
-					} else {
-						Date end = new Date();
-						end.setTime(result.getLastStopTime());
-						DateTimeFormat fmt = DateTimeFormat.getFormat("dd/MM/yyyy HH:mm:ss");
-						lastStopTimeReport.setText(fmt.format(end));
-					}
-				}catch (Exception e) {
-					lastStopTimeReport.setText("");
-				}
+				buildData(result);
 			}
 			@Override
 			public void onFailure(Throwable caught) {
@@ -122,7 +89,7 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 	public void onButtonClick(final ClickEvent event) {
 		eseguiButton.state().loading();
 		WebRetrieverServiceAsync wrService = GWT.create(WebRetrieverService.class);
-		wrService.runReport(this.reportName, new AsyncCallback<String>() {
+		wrService.runReport(this.reportName, new AsyncCallback<ReportConfiguration>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -132,8 +99,10 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 			}
 
 			@Override
-			public void onSuccess(String result) {
+			public void onSuccess(ReportConfiguration result) {
 				com.google.gwt.user.client.Window.alert("Report eseguito correttamente.");
+				
+				buildData(result);
 				eseguiButton.state().reset();
 			}
 		});
@@ -144,4 +113,58 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 		
 	}
 
+	
+	private void buildData(ReportConfiguration aReport) {
+		//pulizia dei vecchi dati del form
+		cleanFormDate();
+		
+		nomeReport.setText(aReport.getName());
+		descrizioneReport.setText(aReport.getDescription());
+		datasourceReport.setText(aReport.getDatasource());
+		sqlReport.setText(aReport.getSql());
+		schedulazioneReport.setText(aReport.getCron());
+		recipitReport.setText(aReport.getRecipient());
+		ccReport.setText(aReport.getCclist());
+		ccnReport.setText(aReport.getCcnlist());
+		
+		try {
+			if(aReport.getLastStartTime()==0) {
+				lastStartTimeReport.setText("");
+			} else  {
+				Date start = new Date();
+				start.setTime(aReport.getLastStartTime());
+				DateTimeFormat fmt = DateTimeFormat.getFormat("dd/MM/yyyy HH:mm:ss");
+				lastStartTimeReport.setText(fmt.format(start));
+			}
+		}catch (Exception e) {
+			lastStartTimeReport.setText("");
+		}
+
+		try {
+			if(aReport.getLastStopTime()==0) {
+				lastStopTimeReport.setText("");
+			} else {
+				Date end = new Date();
+				end.setTime(aReport.getLastStopTime());
+				DateTimeFormat fmt = DateTimeFormat.getFormat("dd/MM/yyyy HH:mm:ss");
+				lastStopTimeReport.setText(fmt.format(end));
+			}
+		}catch (Exception e) {
+			lastStopTimeReport.setText("");
+		}
+	}
+	
+	private void cleanFormDate() {
+		nomeReport.setText("");
+		descrizioneReport.setText("");
+		datasourceReport.setText("");
+		sqlReport.setText("");
+		schedulazioneReport.setText("");
+		recipitReport.setText("");
+		ccReport.setText("");
+		ccnReport.setText("");
+		lastStartTimeReport.setText("");
+		lastStopTimeReport.setText("");
+	}
+	
 }

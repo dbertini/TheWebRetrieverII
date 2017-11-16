@@ -17,7 +17,7 @@ public interface ReportRetrieverIterface {
 	Call<ReportConfiguration> reportDetail(@Path("reportname")String reportname);
 	
 	@GET("reports/runReport/{reportname}")
-	Call<String> runReport(@Path("reportname")String reportname);
+	Call<ReportConfiguration> runReport(@Path("reportname")String reportname);
 
 	@GET("datasources/datasourceList")
 	Call<List<DataSourceConfiguration>> dataSourceList();

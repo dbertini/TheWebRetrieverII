@@ -43,7 +43,7 @@ public class WebRetrieverServiceImpl extends RemoteServiceServlet implements Web
 	}
 
 	@Override
-	public String runReport(String aReportName) {
+	public ReportConfiguration runReport(String aReportName) {
 		ReportRetrieverService reportserv = new ReportRetrieverService();
 		try {
 			return reportserv.runReport(aReportName);

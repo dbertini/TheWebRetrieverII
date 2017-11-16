@@ -55,9 +55,9 @@ public class ReportRetrieverService {
 	}
 	
 	
-	public String runReport(String aReportName) throws Exception {
-		Call<String> call = service.runReport(aReportName);
-		Response<String> response = call.execute();
+	public ReportConfiguration runReport(String aReportName) throws Exception {
+		Call<ReportConfiguration> call = service.runReport(aReportName);
+		Response<ReportConfiguration> response = call.execute();
 		if(response.errorBody()!=null){
 			return null;
 		} else{

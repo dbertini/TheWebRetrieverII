@@ -10,7 +10,7 @@ public interface WebRetrieverServiceAsync {
 	void getMessaggio(String input, AsyncCallback<String> callback);
 	void getListaReport(AsyncCallback<ArrayList<ReportConfiguration>> callback);
 	void getReportDetail(String aReportName, AsyncCallback<ReportConfiguration> callback);
-	void runReport(String aReportName, AsyncCallback<String> callback);
+	void runReport(String aReportName, AsyncCallback<ReportConfiguration> callback);
 	void getListaDataSources(AsyncCallback<ArrayList<DataSourceConfiguration>> callback);
 	void getDataSourceDetail(String aDataSourcetName, AsyncCallback<DataSourceConfiguration> callback);
 	void getRetrieverVersion(AsyncCallback<String> callback);

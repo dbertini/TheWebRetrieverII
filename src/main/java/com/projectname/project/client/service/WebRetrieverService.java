@@ -12,7 +12,7 @@ public interface WebRetrieverService extends RemoteService {
 	String getMessaggio(String aString);
 	ArrayList<ReportConfiguration> getListaReport();
 	ReportConfiguration getReportDetail(String aReportName);
-	String runReport(String aReportName);
+	ReportConfiguration runReport(String aReportName);
 	ArrayList<DataSourceConfiguration> getListaDataSources();
 	DataSourceConfiguration getDataSourceDetail(String aDataSourcetName);
 	String getRetrieverVersion();
