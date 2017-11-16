@@ -2,11 +2,14 @@ package com.projectname.project.client.application.detailds;
 
 import javax.inject.Inject;
 
+import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.DescriptionData;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -28,6 +31,9 @@ public class DetailDataSourceView extends ViewWithUiHandlers<DetailDataSourcePre
 	DescriptionData passwordDs;
 	@UiField
 	DescriptionData driverDs;
+	
+	@UiField
+	Button indietroButton;
 
 	
 	interface Binder extends UiBinder<Widget, DetailDataSourceView> {
@@ -47,7 +53,10 @@ public class DetailDataSourceView extends ViewWithUiHandlers<DetailDataSourcePre
 		buildData();
 	}
 	
-	
+	@UiHandler("indietroButton")
+	public void onButtonIndietroClick(final ClickEvent event) {
+		getUiHandlers().sendToListaDataSource();
+	}
 	
 	private void buildData() {
 		WebRetrieverServiceAsync wrService = GWT.create(WebRetrieverService.class);

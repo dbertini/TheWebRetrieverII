@@ -29,6 +29,8 @@
 					<b:DescriptionTitle text="Driver:" />
 					<b:DescriptionData text="" ui:field="driverDs" />
 				</b:Description>
+				
+				<b:Button type="LINK" text="Indietro" ui:field="indietroButton"/>
 			</b:Container>
 		</b:PanelBody>
 	</b:Panel>

@@ -110,7 +110,7 @@ public class DetailReportView extends ViewWithUiHandlers<DetailReportPresenter> 
 
 	@UiHandler("indietroButton")
 	public void onButtonIndietroClick(final ClickEvent event) {
-		
+		getUiHandlers().sendToListaReport();
 	}
 
 	
